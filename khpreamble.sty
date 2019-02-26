@@ -1,0 +1,48 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{khpreamble}[2015/10/22 includes packages and defines commands]
+
+%\RequirePackage[margin=18mm]{geometry}
+\RequirePackage{amsmath,mathtools}
+\RequirePackage[amssymb]{SIunits}
+\RequirePackage{graphicx}
+\RequirePackage{subfigure}
+\RequirePackage{parskip}
+\RequirePackage{standalone}
+\RequirePackage{tikz,pgf,pgfplots}
+\usetikzlibrary{decorations.pathmorphing,patterns}
+\usetikzlibrary{arrows,snakes,backgrounds,patterns,matrix,shapes,fit,calc,shadows,plotmarks,decorations.markings,datavisualization,datavisualization.formats.functions,intersections,external}
+\usetikzlibrary{decorations.pathmorphing,patterns}
+\pgfplotsset{compat=1.9}
+\DeclareRobustCommand*{\mexp}[1]{\ensuremath{\mathrm{e}^{#1}}}
+\DeclareRobustCommand*{\ztrf}[1]{\ensuremath{\mathcal{Z} \left\{#1\right\}}}
+\DeclareRobustCommand*{\ztrfcompact}[1]{\ensuremath{\mathcal{Z} \big\{#1\big\}}}
+\DeclareRobustCommand*{\ztransform}[1]{\sum_{k=0}^{\infty} #1 z^{-k}}
+\DeclareRobustCommand*{\fourier}[1]{\ensuremath{\mathcal{F} \left\{#1\right\}}}
+\DeclareRobustCommand*{\fourierinv}[1]{\ensuremath{\mathcal{F}^{-1} \left\{#1\right\}}}
+\DeclareRobustCommand*{\laplace}[1]{\ensuremath{\mathcal{L} \left\{#1\right\}}}
+\DeclareRobustCommand*{\laplacetrf}[1]{\ensuremath{\int_0^{\infty} \left\(#1\right\)\mexp{-st}dt}}
+\DeclareRobustCommand*{\laplaceinv}[1]{\ensuremath{\mathcal{L}^{-1} \left\{#1\right\}}}
+\DeclareRobustCommand*{\realpart}[1]{\ensuremath{\operatorname{Re}\left\{#1\right\}}}
+\DeclareRobustCommand*{\impart}[1]{\ensuremath{\operatorname{Im}\left\{#1\right\}}}
+\DeclareRobustCommand*{\vsp}[1]{\rule{0pt}{#1}}
+\DeclareRobustCommand*{\timederiv}[1]{\ensuremath{\frac{d^{#1}}{dt^{n}}}}
+\DeclareRobustCommand*{\bbm}{\begin{bmatrix}}
+\DeclareRobustCommand*{\ebm}{\end{bmatrix}}
+\DeclareRobustCommand*{\obsmatrix}{\mathcal{O}}
+\DeclareRobustCommand*{\contrmatrix}{\mathcal{C}}
+\DeclareRobustCommand*{\cwh}{\ensuremath{\cos \omega h}}
+\DeclareRobustCommand*{\swh}{\ensuremath{\sin \omega h}}
+\DeclareRobustCommand*{\cframe}[1]{\ensuremath{\{#1\}}}
+\DeclareRobustCommand*{\vecbase}[2]{\ensuremath{\prescript{\small #2}{}{#1}}}
+\DeclareRobustCommand*{\hvecbase}[2]{\ensuremath{\prescript{#2}{}{\bar{#1}}}}
+\DeclareRobustCommand*{\mexprot}[1]{\ensuremath{\mathrm{e}^{\hat{\omega}_#1\theta_#1}}}
+\DeclareRobustCommand*{\mexptrf}[1]{\ensuremath{\mathrm{e}^{\hat{\xi}_#1\theta_#1}}}
+\DeclareRobustCommand*{\rotmatrix}[2]{\ensuremath{\prescript{#1}{#2}{\mathrm{R}}}}
+\DeclareRobustCommand*{\inv}{\ensuremath{^{-1}}}
+\DeclareRobustCommand*{\transp}{\ensuremath{^{\mathrm{T}}}}
+\DeclareRobustCommand*{\equalexpl}[1]{\underset{\substack{\uparrow\\[1ex]\mathrlap{\text{\hspace{-1em}#1}}}}{=}}
+\DeclareRobustCommand*{\mathexpl}[3]{\underset{\substack{\uparrow\\[#3]\mathrlap{\text{\hspace{-1em}#2}}}}{#1}}
+\DeclareRobustCommand*{\stepfcn}{\ensuremath{\begin{cases} 0, & t<0\\1, & t \ge 0 \end{cases}}}
+\DeclareRobustCommand*{\rampfcn}{\ensuremath{\begin{cases} 0, & t<0\\t, & t \ge 0 \end{cases}}}
+
+

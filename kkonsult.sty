@@ -1,0 +1,10 @@
+\NeedsTeXFormat{LaTeX2e}[1994/12/01]
+
+\ProvidesPackage{kkonsult}[2003/02/10 For use with letter.]
+
+\newif\ifpdf\ifx\pdfoutput\undefined\pdffalse\else\pdfoutput=1\pdftrue\fi
+\newcommand{\pdfgraphics}{\ifpdf\DeclareGraphicsExtensions{.pdf,.jpg}\else\fi}
+
+\signature{Kjartan Halvorsen}
+\address{Upplandsgatan 71, 2tr\\113 28 Stockholm\\Tlf: 08 34 38 16}
+

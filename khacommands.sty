@@ -1,0 +1,133 @@
+\NeedsTeXFormat{LaTeX2e}[1994/12/01]
+
+\ProvidesPackage{khacommands}[2002/09/17 Useful commands etc.]
+
+\newif\ifpdf\ifx\pdfoutput\undefined\pdffalse\else\pdfoutput=1\pdftrue\fi
+\newcommand{\pdfgraphics}{\ifpdf\DeclareGraphicsExtensions{.pdf,.jpg}\else\fi}
+
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{natbib}
+\RequirePackage{ifthen}
+\ifpdf
+  \RequirePackage[pdftex]{graphicx}
+  \pdfcompresslevel=4
+   %  \pdfimageresolution=300
+\else
+  \RequirePackage[dvips]{graphics}
+\fi
+
+% For swedish documents copy this to .tex file
+%\usepackage[swedish]{babel}
+%\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}}
+
+\renewcommand{\d}{\mathrm{d}}
+\renewcommand{\vec}{\mathbf}
+%\renewcommand{\restoreapp}{}
+\renewcommand{\exp}{\mathrm{e}^}
+\renewcommand{\matrix}{\mathbf}
+
+\newcommand{\cvheader}[1]{\vspace{6mm}
+  {\noindent \large \sf #1} \vspace{2mm}}
+
+\newcommand{\rotation}{\mathbf{R}}
+\newcommand{\point}{\mathbf}
+\newcommand{\omegavhat}{\mbox{\boldmath$\omega$}^{\wedge}}
+\newcommand{\hatomegav}{\widehat{\mbox{\boldmath$\omega$}}}
+\newcommand{\omegav}{\mbox{\boldmath$\omega$}}
+\newcommand{\phiv}{\mbox{\boldmath$\phi$}}
+\newcommand{\thetav}{\mbox{\boldmath$\theta$}}
+\newcommand{\betav}{\mbox{\boldmath$\beta$}}
+\newcommand{\myav}[2]{\frac{1}{#2}\sum_{#1=1}^{#2}}
+\newcommand{\vareye}[1]{\ifthenelse{\equal{#1}{}} 
+  {\matrix{I}}{\matrix{I}_{#1 \times #1}}}
+\newcommand{\eye}[1]{\matrix{I}_{#1 \times #1}}
+\newcommand{\imfcn}{\mathrm{im}}
+\newcommand{\db}{\Delta{}\vec{b}}
+\newcommand{\grad}{\mbox{$^{\circ}$}}
+\newcommand{\degree}{\mbox{$^{\circ}$}}
+\newcommand{\pdiff}[2][]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\diff}[2][]{\frac{\mathrm{d}{#1}}{\mathrm{d}{#2}}}
+\newcommand{\mypartial}[2][]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\twoD}{{\sc 2d}}
+\newcommand{\threeD}{{\sc 3d}}
+\newcommand{\dlt}{{\sc dlt}}
+\newcommand{\dof}{{\sc dof}}
+\newcommand{\Rspace}{\mathbb{R}}
+\newcommand{\sysfunc}{f}
+\newcommand{\measfunc}{h}
+\newcommand{\noisecov}{Q}
+\newcommand{\mft}{MFT}
+\newcommand{\Normal}{\mathcal{N}}
+\newcommand{\SEtre}{\mbox{{\sc se(3)}}}
+\newcommand{\SOtre}{\mbox{{\sc so(3)}}}
+\newcommand{\cm}{\mbox{$\mathrm{cm}$}}
+\newcommand{\lm}{%
+  \ifmmode{}LM\else{}{\sc lm}\fi}
+\newcommand{\lmmethod}{\lm{}}
+\newcommand{\mha}{%
+  \ifmmode MHA \else {\sc mha}\fi}
+\newcommand{\ds}{%
+  \ifmmode DS \else {\sc ds}\fi}
+\newcommand{\sfmethod}{%
+  \ifmmode SF \else {\sc sf}\fi}
+\newcommand{\bcsf}{%
+  \ifmmode BCSF \else {\sc bcsf}\fi}
+\newcommand{\fha}{{\sc fha}}
+\newcommand{\rgb}{{\sc rgb}}
+\newcommand{\hsi}{{\sc hsi}}
+\newcommand{\cor}{\point{c}}
+\newcommand{\aor}{\omegav}
+\newcommand{\marker}{\point{p}}
+\newcommand{\mbar}[1]{\overline{\marker^{#1}}}
+\newcommand{\msquarebar}[1]{\ifthenelse{\equal{#1}{}} 
+    {\overline{\marker^2}}{\overline{\left(\marker^{#1}\right)^2}}}
+\newcommand{\mcubebar}[1]{\ifthenelse{\equal{#1}{}} 
+    {\overline{\marker^3}}{\overline{\left(\marker^{#1}\right)^3}}}
+\newcommand{\rvec}{\vec{u}}
+\newcommand{\rvbar}[1]{\overline{\rvec^{#1}}}
+\newcommand{\rvsquarebar}[1]{\ifthenelse{\equal{#1}{}} 
+    {\overline{\rvec^2}}{\overline{\left(\rvec^{#1}\right)^2}}}
+\newcommand{\rvcubebar}[1]{\ifthenelse{\equal{#1}{}} 
+    {\overline{\rvec^3}}{\overline{\left(\rvec^{#1}\right)^3}}}
+\newcommand{\wvec}{\vec{w}}
+\newcommand{\wbar}[1]{\overline{\wvec^{#1}}}
+\newcommand{\noisebar}{\overline{\vec{e}}}
+\newcommand{\bvec}{\vec{b}}
+\newcommand{\Perp}[2][]{P_{\perp{}\vec{#2}_{#1}}}
+\newcommand{\DA}{\Delta{}A}
+\newcommand{\featurevec}{\vec{f}}
+\newcommand{\featurespace}{\mathbb{F}}
+\newcommand{\model}{\mathcal{M}}
+\newcommand{\configspace}{\Phi}
+\newcommand{\distance}{\mathcal{D}}
+\newcommand{\imagespace}{\mathbb{I}}
+\newcommand{\invivo}{{\em in vivo}}
+\newcommand{\invitro}{{\em in vitro}}
+\newcommand{\ekf}{{\sc ekf}}
+\newcommand{\kf}{{\sc kf}}
+\newcommand{\svd}{{\sc svd}}
+\newcommand{\tls}{{\sc tls}}
+\newcommand{\rms}{{\sc rms}}
+\newcommand{\mse}{{\sc mse}}
+\newcommand{\bekf}{{\sc bekf}}
+\newcommand{\olekf}{{\sc olekf}}
+\newcommand{\dmekf}{{\sc dmekf}}
+\newcommand{\cwna}{{\sc cwna}}
+\newcommand{\arma}{{\sc arma}}
+\newcommand{\gcvspl}{{\sc gcvspl}}
+\newcommand{\lp}{{\sc lp}}
+\newcommand{\limb}[2]{{\sc #1 #2}}
+\newcommand{\horse}[1]{{\sc #1}}
+\newcommand{\alimb}[1]{{\sc #1}}
+\newcommand{\apriori}{{\em a priori}}
+\newcommand{\dt}{{\sc dt}}
+\newcommand{\vdt}{{\sc vdt}}
+\newcommand{\fl}{{\sc fl}}
+\newcommand{\bsp}{{\sc bsp}}
+
+\newcommand{\mv}{\vec{m}}
+\newcommand{\vv}{\vec{v}}
+
+\def\bydefn{\stackrel{\Delta}{=}}

@@ -1,0 +1,232 @@
+\NeedsTeXFormat{LaTeX2e} 
+
+%\newif\ifpdf\ifx\pdfoutput\undefined\pdffalse\else\pdfoutput=1\pdftrue\fi
+%\newcommand{\pdfgraphics}{\ifpdf\DeclareGraphicsExtensions{.pdf,.jpg}\else\fi}
+
+%\newif\if@kha@faktura
+%\newif\if@kha@fakturareminder
+%\DeclareOption{faktura}{\@kha@fakturatrue}
+%\DeclareOption{reminder}{\@kha@fakturaremindertrue}
+%\DeclareOption*{\PackageWarning{khakonsult}{Unknown option
+%    `\CurrentOption'}}
+%\ProcessOptions\relax
+
+%% Set paper size
+\setlength\paperheight{297mm}
+\setlength\paperwidth{210mm}
+
+%% Never twosided
+\@twosidefalse
+
+%% Set the page layout
+\setlength{\hoffset}{10mm} %left margin
+\addtolength{\hoffset}{-1in} % is at \hoffset+1in
+\setlength{\voffset}{12mm} %top margin
+%\addtolength{\voffset}{-1in} % is at \voffset+1in
+\setlength{\topmargin}{2mm} %8+9 = 17
+\setlength{\oddsidemargin}{52mm} %#### 62-\marginparwidth
+\setlength{\evensidemargin}{62mm} %210-148
+\setlength{\marginparwidth}{35.5mm} %42-6.5
+\setlength{\marginparsep}{13mm} %65-42
+\setlength{\headheight}{19pt}
+\setlength{\headsep}{25mm} %42-6.5-9-12pt (not really)
+\addtolength{\headsep}{-\headheight}
+\setlength{\textheight}{272mm} %272-\headsep-\headheight-\topmargin-10mm
+\addtolength{\textheight}{-\headsep}
+\addtolength{\textheight}{-\headheight}
+\addtolength{\textheight}{-\topmargin}
+\addtolength{\textheight}{-10mm}
+\setlength{\textwidth}{125mm}
+
+%% The marginpars on the left
+\reversemarginpar
+%% for margin: 7pt, 10pt lineskip
+\newcommand\margsize{\@setfontsize\margsize\@viiipt\@xpt}
+\normalfont
+
+%% babel redefines this - undo it!
+\def\dateswedish{%
+\renewcommand{\today}{\number\year-\two@digits\month-\two@digits\day}
+}
+\dateswedish
+%% Options
+
+\newcommand{\datum}[1][\today]{\gdef\@datum{#1}}
+\newcommand{\beteckning}[1]{\gdef\@beteckning{#1}}
+\newcommand{\mottagare}[1]{\gdef\@mottagare{#1}}
+
+%% Same in both languages
+\newcommand{\avsnamn}[1]{\gdef\@avsnamn{#1}}
+\newcommand{\avsignatur}[1]{\gdef\@avsignatur{#1}}
+\newcommand{\hemsida}[1]{\gdef\@hemsida{#1}}
+\newcommand{\epost}[1]{\gdef\@epost{#1}}
+\newcommand{\fakturanr}[1]{\gdef\@fakturanr{#1}}
+
+\newcommand{\personnr}{720327-1296}
+\newcommand{\momsreg}{SE720327129601}
+\newcommand{\kontonr}{\"Ostg\"ota Enskilda Bank 1344-18-21947}
+\newcommand{\fsedel}{Innehar F-skattebevis}
+
+%% Swedish
+\newcommand{\postadress}[1]{\gdef\@postadress{#1}}
+\newcommand{\telefon}[1]{\gdef\@telefon{#1}}
+\newcommand{\telefax}[1]{\gdef\@telefax{#1}}
+%% English versions
+\newcommand{\postadresseng}[1]{\gdef\@postadresseng{#1}}
+\newcommand{\telefoneng}[1]{\gdef\@telefoneng{#1}}
+\newcommand{\telefaxeng}[1]{\gdef\@telefaxeng{#1}}
+
+%% Set defaults
+\datum{}
+
+%\if@kha@faktura
+  \beteckning{Faktura}
+  \fakturanr{}
+%\fi
+
+%\if
+%  \if@kha@fakturareminder 
+%    \beteckning{Betalningsp\aa{}minnelse}
+%    \fakturanr{}
+%  \else
+%    \beteckning{}
+%  \fi
+%fi
+
+\mottagare{}
+
+\avsnamn{Kjartan Halvorsen}
+\avsignatur{}
+\hemsida{}
+\epost{}
+
+\postadress{Backvägen 3\\191 35 Sollentuna}
+\telefon{0790-13 59 27}
+\telefax{}
+\postadresseng{}
+\telefoneng{}
+\telefaxeng{}
+
+
+\RequirePackage{url}
+%% URLs should be in sans-serif, not typewriter
+\urlstyle{sf}
+
+\RequirePackage{fancyheadings}
+%\ifpdf
+  \RequirePackage[pdftex]{graphicx}
+  \pdfcompresslevel=4
+   %  \pdfimageresolution=300
+%\else
+  \RequirePackage[dvips]{graphics}
+%\fi
+
+\newcommand{\opening}[1]{\textbf{#1}\par\nobreak}
+\newcommand{\closing}[1]{\par\nobreak\vspace{2\bigskipamount}
+\noindent #1}
+
+%% The left-margin stuff for the first page
+\def\@makekhaleftmargin{\mbox{}%
+\marginpar{%
+\sffamily\margsize
+\parindent=0mm\parskip=\baselineskip\raggedright
+
+\includegraphics{sign}
+
+%\ifx\@avsnamn\@empty
+%\else
+\textbf{\@avsnamn}
+%\fi
+
+%\ifx\@postadress\@empty
+\else 
+Postadress:\newline
+\@postadress
+%\fi
+
+%\ifx\@telefon\@empty
+%\else 
+Telefon:\newline
+\@telefon
+%\fi
+
+%\ifx\@telefax\@empty
+%\else Telefax:\newline
+%\@telefax
+%\fi
+
+%\ifx\@hemsida\@empty
+%\else Hemsida:\newline
+%\@hemsida
+%\fi
+
+%\ifx\@epost\@empty
+%\else 
+Epost:\newline
+\@epost
+%\fi
+
+\vfill
+
+Moms reg.~nr.~: \newline
+\momsreg
+
+Konto: \newline
+\kontonr
+
+\fsedel
+}
+
+
+\setlength{\headrulewidth}{0pt}
+\setlength{\plainheadrulewidth}{0pt}
+\setlength{\footrulewidth}{0pt}
+\setlength{\plainfootrulewidth}{0pt}
+
+\chead{\large \textbf{\@beteckning}}
+\rhead{%
+\fancyplain{%
+\hfill
+\@datum\\
+%\if@kha@faktura{}
+\mbox{Fakturanr: %
+\@fakturanr}
+%\else\if@kha@fakturareminder%
+%\mbox{Fakturanr: \@fakturanr}
+%\fi\fi%
+}}
+\lfoot{}\cfoot{}\rfoot{}%
+}
+%% Use the above headers/footers
+
+
+\pagestyle{fancyplain}
+
+\AtBeginDocument{%
+\thispagestyle{plain} %first page (not really plain!)
+\@makekhaleftmargin %left-margin stuff
+\hspace*{\fill}\parbox[t]{8cm}{\@mottagare}\\[5\baselineskip]
+}
+
+\AtEndDocument{%
+\label{pagestotal}
+}
+
+%% \CharacterTable
+%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%   Digits        \0\1\2\3\4\5\6\7\8\9
+%%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%%   Dollar        \$     Percent       \%     Ampersand     \&
+%%   Acute accent  \'     Left paren    \(     Right paren   \)
+%%   Asterisk      \*     Plus          \+     Comma         \,
+%%   Minus         \-     Point         \.     Solidus       \/
+%%   Colon         \:     Semicolon     \;     Less than     \<
+%%   Equals        \=     Greater than  \>     Question mark \?
+%%   Commercial at \@     Left bracket  \[     Backslash     \\
+%%   Right bracket \]     Circumflex    \^     Underscore    \_
+%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%   Right brace   \}     Tilde         \~}
+\endinput
+%%
+%% End of file `khakonsult.sty'.

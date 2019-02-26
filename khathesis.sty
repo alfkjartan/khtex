@@ -1,0 +1,51 @@
+\NeedsTeXFormat{LaTeX2e}[1994/12/01]
+
+\ProvidesPackage{khathesis}[2002/07/05 Useful commands etc.]
+
+\RequirePackage{khacommands}
+
+\RequirePackage{setspace}
+\RequirePackage{arydshln}
+\RequirePackage{appendix}
+\RequirePackage{framed}
+\RequirePackage{fancyhdr}
+\RequirePackage[Lenny]{fncychap}
+
+\DeclareOption{doublespacing}{\doublespacing}
+\DeclareOption{reviewcopy}{\doublespacing}
+\DeclareOption*{\PackageWarning{khathesis}{Unknown option
+    `\CurrentOption'}}
+\ProcessOptions\relax
+
+\newcommand{\mytitle}{Model-based Methods in Motion Capture}
+\newcommand{\phdarea}{Electrical Engineering with specialization in
+  Systems Analysis}
+\newcommand{\phd}{Doctor of Philosophy}
+\newcommand{\phddegree}{\phd{} in \phdarea{}}
+\newcommand{\auanumber}{42}
+\newcommand{\isbn}{91-554-5381-3}
+\newcommand{\issn}{1104-2516}
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}{}}
+\setlength{\textwidth}{120mm}
+\setlength{\textheight}{210mm}
+%\addtolength{\textheight}{-\footskip}
+\addtolength{\textheight}{-\headsep}
+\addtolength{\textheight}{-\headheight}
+\setlength{\headwidth}{\textwidth}
+\fancyhf{}
+\fancyhead[RO,LE]{\sf \thepage}
+\fancyhead[LO]{\sf \rightmark}
+\fancyhead[RE]{\sf \leftmark}
+
+\renewcommand{\figurename}{Figure}
+
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\floatpagefraction}{0.40}
+%\setcounter{\totalnumber}{5}
+
