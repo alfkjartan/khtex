@@ -1,0 +1,36 @@
+\NeedsTeXFormat{LaTeX2e}[1994/12/01]
+
+\ProvidesPackage{khatikz}[2019/02/26 Useful tikz commands etc.]
+
+\newif\ifpdf\ifx\pdfoutput\undefined\pdffalse\else\pdfoutput=1\pdftrue\fi
+\newcommand{\pdfgraphics}{\ifpdf\DeclareGraphicsExtensions{.pdf,.jpg}\else\fi}
+
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{ifthen}
+\RequirePackage{circuitikz}
+\usetikzlibrary{decorations.pathmorphing,patterns}
+\usetikzlibrary{arrows,snakes,backgrounds,patterns,matrix,shapes,fit,calc,shadows,plotmarks,decorations.markings,datavisualization,datavisualization.formats.functions,intersections,external}
+\usetikzlibrary{decorations.pathmorphing,patterns}
+\ifpdf%
+  \RequirePackage{graphicx}
+  %\RequirePackage[pdftex]{graphicx}
+  %\pdfcompresslevel=4
+   %  \pdfimageresolution=300
+\else
+  \RequirePackage[dvips]{graphics}
+\fi
+
+\DeclareRobustCommand*{\cvheader}[1]{\vspace{6mm}
+  {\noindent \large \sf #1} \vspace{2mm}}
+
+% Assumes in circuitikz environment
+\DeclareRobustCommand*{\fivetwovalve}[1]{%
+  \node[] (#1) {\includegraphics[width=15mm]{p-52-valve}};   
+}
+\DeclareRobustCommand*{\singlepiston}[1]{%
+  \node[] (#1) {\includegraphics[width=15mm]{p-piston-single}};   
+}
+\DeclareRobustCommand*{\doublepiston}[1]{%
+  \node[] (#1) {\includegraphics[width=15mm]{p-piston-double}};   
+}
